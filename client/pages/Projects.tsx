@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { residentialProjectsData } from "@/data/projects";
+import { residentialProjectsData, commercialProjectsData } from "@/data/projects";
 
 const projectCategories = [
   {
