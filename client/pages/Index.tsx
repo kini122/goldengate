@@ -244,6 +244,49 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Map Section */}
+      <section className="w-full">
+        <div className="w-full h-[480px] relative">
+          <iframe
+            title="Golden Gate Location"
+            src="https://maps.google.com/maps?q=11.265695,75.820899&t=k&z=15&ie=UTF8&iwloc=&output=embed"
+            className="w-full h-full border-0"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+
+          <div className="absolute left-1/2 top-16 transform -translate-x-1/2 w-[min(760px,90%)] bg-white rounded shadow-lg p-4 z-20">
+            <div className="flex items-start justify-between">
+              <div className="text-sm text-gray-800">
+                Tp Kumaran Nair road, Thondayad, bye-pass junction, Nellikkode, Kozhikode, Kerala 673017
+              </div>
+              <button
+                type="button"
+                aria-label="close"
+                className="ml-4 text-gray-500 hover:text-gray-700"
+                onClick={(e) => {
+                  const el = (e.target as HTMLElement).closest('.absolute');
+                  if (el) el.remove();
+                }}
+              >
+                ✕
+              </button>
+            </div>
+            <div className="mt-2">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=11.265695,75.820899"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-gold hover:underline"
+              >
+                Directions
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="bg-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
