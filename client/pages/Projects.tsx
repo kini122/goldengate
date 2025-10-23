@@ -101,7 +101,18 @@ export default function Projects() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="bg-white py-12 lg:py-20">
+      <section
+        className="bg-white"
+        style={{
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2F587546ad8c244b4d84afa236ebe7a32d%2F9b2524dd21594ebda42f2b5a91b6a52a)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          padding: "80px 0",
+          marginBottom: "-5px",
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 text-center mb-4">
             Curtains, Blinds, Upholstery, and other Decor Projects.
@@ -110,7 +121,7 @@ export default function Projects() {
       </section>
 
       {/* Project Grid */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-white" style={{ padding: "20px 0 46px" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {projectCategories[0].items.map((item, index) => (
@@ -136,31 +147,33 @@ export default function Projects() {
 
       {/* Residential Projects Section */}
       <section className="bg-gold/5 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <div className="flex flex-col lg:flex-row gap-12 mb-16 items-center justify-center w-full">
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
                 Residential Projects
               </h2>
-              <Link to="/projects">
-                <Button
-                  variant="outline"
-                  className="border-gray-700 text-gray-700 hover:bg-gray-50"
-                >
-                  Explore
-                </Button>
-              </Link>
+              <div className="mt-2">
+                <Link to="/projects">
+                  <Button
+                    variant="outline"
+                    className="border-gray-700 text-gray-700 hover:bg-gray-50"
+                  >
+                    Explore
+                  </Button>
+                </Link>
+              </div>
             </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-96">
+            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 w-full max-w-2xl">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fccfa5a5840de447aa1ec5f97c7f4a0c9?format=webp&width=800"
+                src="https://cdn.builder.io/api/v1/image/assets%2F587546ad8c244b4d84afa236ebe7a32d%2F91a5a74110224c70952334d22acc0b05"
                 alt="Residential Project"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center mx-auto">
             {residentialProjects.map((project, index) => (
               <div key={index} className="flex gap-4">
                 <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0">
@@ -197,6 +210,7 @@ export default function Projects() {
                 src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"
                 alt="Commercial Project"
                 className="w-full h-full object-cover"
+                style={{ marginTop: "-4px" }}
               />
             </div>
             <div>
