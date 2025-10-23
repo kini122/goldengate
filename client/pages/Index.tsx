@@ -102,8 +102,8 @@ export default function Index() {
               </h2>
             </div>
             <div className="relative mx-auto mb-2 w-[42px] border-t-[2.4px] border-[rgb(90,69,38)]" />
-            <div className="relative mx-auto mb-[10px] min-h-[280px] w-[554px]">
-              <p className="text-[16px] leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
+            <div className="relative mx-auto mb-[10px] min-h-[220px] w-full max-w-[680px] px-4">
+              <p className="text-base md:text-[16px] leading-7 md:leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
                 Looking for the best Curtains and Blinds designs near you? Our
                 Curtains and Blinds are designed by Experienced professionals
                 and handcrafted by the best artisans with state-of-the-art
