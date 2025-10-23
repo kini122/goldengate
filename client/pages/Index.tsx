@@ -26,19 +26,21 @@ function Slideshow({ images, interval = 3000 }: { images: string[]; interval?: n
       ))}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
       <div className="absolute inset-0 flex items-center justify-start">
-        <div className="text-left text-white max-w-3xl px-6 md:px-12 lg:px-24 ml-4 md:ml-8 lg:ml-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">
+        <div className="text-left text-white w-full max-w-[1100px] px-6 md:px-12 lg:px-24 ml-4 md:ml-8 lg:ml-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 tracking-wide leading-tight md:leading-snug">
             Welcome to Golden Gate Decor
           </h1>
-          <p className="text-lg md:text-xl mb-6">Your Preferred Interior Design Studio</p>
-          <div className="flex gap-4">
+          <p className="text-lg md:text-xl mb-8 leading-relaxed opacity-95">
+            Your Preferred Interior Design Studio
+          </p>
+          <div className="flex gap-4 flex-wrap">
             <Link to="/projects">
-              <Button variant="default" className="rounded-full px-6 py-3 border border-gold text-gold bg-transparent hover:bg-gold/10">
+              <Button className="rounded-full px-8 py-3 bg-gradient-to-r from-[rgb(238,197,88)] to-[rgb(192,147,54)] text-white shadow-lg transform transition-transform duration-200 hover:scale-105">
                 View Projects
               </Button>
             </Link>
             <Link to="/contact">
-              <Button variant="outline" className="rounded-full px-6 py-3 border-gold text-white bg-white/10 hover:bg-white/20">
+              <Button variant="outline" className="rounded-full px-8 py-3 border border-white/30 text-white bg-white/5 shadow-sm hover:bg-white/10">
                 Contact Us
               </Button>
             </Link>
