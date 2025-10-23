@@ -67,62 +67,6 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Slideshow images={slideshowImages} interval={6000} />
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 mt-8">
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-80">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb4ea7fbd1a9d4e2580e07696e7c3b875?format=webp&width=800"
-                alt="Living room design"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-80">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F8e2fb543f2684f09bdf2433d921fc315?format=webp&width=800"
-                alt="Bedroom design"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-80">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F24a86975b88f457d9aef54c0d99f5359?format=webp&width=800"
-                alt="Bedroom design 2"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-80">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F2f48f77a46824b2cb19ae680c404bdc9?format=webp&width=800"
-                alt="Interior design"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-80">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F05ca7951a9d04f49ab54cadaada9ba13?format=webp&width=800"
-                alt="Interior design 2"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-80">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F204cc6f07bc042c48dcfa93b2bb0b4b1?format=webp&width=800"
-                alt="Living room design 2"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Link to="/projects">
-              <Button
-                variant="outline"
-                className="border-gold text-gold hover:bg-gold/5"
-              >
-                View All Projects
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
