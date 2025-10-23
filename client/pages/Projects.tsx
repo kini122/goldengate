@@ -164,34 +164,21 @@ export default function Projects() {
       </section>
 
       {/* Residential Projects Section */}
-      <section className="bg-gold/5 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <div className="flex flex-col lg:flex-row gap-12 mb-16 items-center justify-center w-full">
-            <div className="text-center lg:text-left">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
-                Residential Projects
-              </h2>
-              <div className="mt-2">
-                <Link to="/projects">
-                  <Button
-                    variant="outline"
-                    className="border-gray-700 text-gray-700 hover:bg-gray-50"
-                  >
-                    Explore
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 w-full max-w-2xl">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F587546ad8c244b4d84afa236ebe7a32d%2F91a5a74110224c70952334d22acc0b05"
-                alt="Residential Project"
-                className="w-full h-full object-cover"
-              />
-            </div>
+      <section className="bg-gradient-to-b from-white to-gold/5 py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 mb-4">
+              Residential Projects
+            </h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold/60 mx-auto mb-6" />
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Discover our exquisite residential interiors designed with precision and elegance
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center mx-auto">
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
             {residentialProjects.map((project, index) => {
               const projectData = residentialProjectsData.find(
                 (p) => p.name === project.name
@@ -199,34 +186,59 @@ export default function Projects() {
               const projectId = projectData?.id;
 
               return (
-                <div key={index} className="flex gap-4">
-                  <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0">
+                <div
+                  key={index}
+                  className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-gold/10 hover:border-gold/30"
+                >
+                  {/* Image Container */}
+                  <div
+                    className="relative overflow-hidden bg-gray-200 h-56 md:h-64 cursor-pointer"
+                    onClick={() => openModal([project.image], 0)}
+                  >
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                  <div className="flex flex-col justify-between py-2">
-                    <h3 className="font-serif font-semibold text-gray-900">
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-serif font-bold text-gray-900 mb-2 group-hover:text-gold transition-colors duration-300">
                       {project.name}
                     </h3>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-gray-700 text-gray-700 hover:bg-gray-50 w-fit"
+                    <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                      {projectData?.shortDescription || "Expertly designed interior spaces"}
+                    </p>
+
+                    {/* Button */}
+                    <button
                       onClick={() => {
                         if (projectId) {
                           navigate(`/project/${projectId}`);
                         }
                       }}
+                      className="inline-block px-6 py-2 bg-gold text-white font-medium rounded-sm hover:bg-gold/80 transition-all duration-300 transform hover:-translate-y-0.5"
                     >
                       Read More
-                    </Button>
+                    </button>
                   </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center">
+            <p className="text-gray-600 mb-6">
+              Explore all our residential projects and see the transformation we create
+            </p>
+            <Link to="/projects">
+              <Button className="bg-gold hover:bg-gold/80 text-white px-8 py-3 rounded-sm transition-all duration-300">
+                Explore All Projects
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
