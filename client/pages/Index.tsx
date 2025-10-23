@@ -64,13 +64,39 @@ export default function Index() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     const id = "elfsight-platform-script";
+    const removeInjected = () => {
+      try {
+        const badge = document.querySelector('a[title="Free Instagram Feed widget"]');
+        if (badge && badge.parentElement) badge.parentElement.removeChild(badge);
+        const err = document.querySelector('[eapps-link="errorContainer"]');
+        if (err && err.parentElement) err.parentElement.removeChild(err);
+        const data = document.querySelector('[eapps-link="dataStatusContainer"]');
+        if (data && data.parentElement) data.parentElement.removeChild(data);
+        const badges = document.querySelectorAll('.elfsight-badge, .eapps-badge, .eapps-widget-badge');
+        badges.forEach((n) => n.parentElement && n.parentElement.removeChild(n));
+      } catch (e) {
+        // ignore
+      }
+    };
+
     if (!document.getElementById(id)) {
       const s = document.createElement("script");
       s.src = "https://apps.elfsight.com/p/platform.js";
       s.async = true;
       s.id = id;
+      s.onload = () => {
+        removeInjected();
+      };
       document.body.appendChild(s);
+    } else {
+      // already loaded
+      removeInjected();
     }
+
+    // run periodically for a short time to catch dynamic inserts
+    const iv = setInterval(removeInjected, 500);
+    const to = setTimeout(() => clearInterval(iv), 5000);
+    return () => clearTimeout(to);
   }, []);
 
   return (
