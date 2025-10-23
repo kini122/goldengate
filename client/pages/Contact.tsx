@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="bg-white py-20 lg:py-32">
+      <section className="bg-white py-8 lg:py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
             Coming Soon.
