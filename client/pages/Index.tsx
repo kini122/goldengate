@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import ImageModal from "@/components/ImageModal";
 
 function Slideshow({
   images,
   interval = 3000,
+  onImageClick,
 }: {
   images: string[];
   interval?: number;
+  onImageClick: (index: number) => void;
 }) {
   const [index, setIndex] = useState<number>(() =>
     Math.floor(Math.random() * images.length),
@@ -23,7 +26,7 @@ function Slideshow({
   }, [images, interval]);
 
   return (
-    <div className="relative w-full overflow-hidden h-[70vh] md:h-screen">
+    <div className="relative w-full overflow-hidden h-[70vh] md:h-screen cursor-pointer" onClick={() => onImageClick(index)}>
       {images.map((src, i) => (
         <img
           key={src}
@@ -66,6 +69,16 @@ function Slideshow({
 }
 
 export default function Index() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImages, setModalImages] = useState<string[]>([]);
+  const [modalIndex, setModalIndex] = useState(0);
+
+  const openModal = (images: string[], index: number = 0) => {
+    setModalImages(images);
+    setModalIndex(index);
+    setModalOpen(true);
+  };
+
   const slideshowImages = [
     "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb4ea7fbd1a9d4e2580e07696e7c3b875?format=webp&width=1600",
     "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F8e2fb543f2684f09bdf2433d921fc315?format=webp&width=1600",
@@ -78,7 +91,7 @@ export default function Index() {
   return (
     <div className="w-full">
       {/* Slideshow Hero (full-bleed) */}
-      <Slideshow images={slideshowImages} />
+      <Slideshow images={slideshowImages} onImageClick={(index) => openModal(slideshowImages, index)} />
 
       {/* About Section */}
       <section className="relative w-full">
@@ -170,11 +183,12 @@ export default function Index() {
                 finalized, we procure the required materials.
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96">
+            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 cursor-pointer"
+              onClick={() => openModal(["https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"], 0)}>
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"
                 alt="Golden Gate Project"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           </div>
@@ -315,6 +329,13 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={modalOpen}
+        images={modalImages}
+        initialIndex={modalIndex}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 }
