@@ -1,12 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { residentialProjectsData } from "@/data/projects";
+import { residentialProjectsData, commercialProjectsData } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 
 export default function ProjectDetail() {
   const { projectId } = useParams();
   const navigate = useNavigate();
 
-  const project = residentialProjectsData.find((p) => p.id === projectId);
+  // Search in both residential and commercial projects
+  const allProjects = [...residentialProjectsData, ...commercialProjectsData];
+  const project = allProjects.find((p) => p.id === projectId);
 
   if (!project) {
     return (
@@ -19,14 +21,14 @@ export default function ProjectDetail() {
     );
   }
 
-  const currentIndex = residentialProjectsData.findIndex(
+  const currentIndex = allProjects.findIndex(
     (p) => p.id === projectId
   );
   const previousProject =
-    currentIndex > 0 ? residentialProjectsData[currentIndex - 1] : null;
+    currentIndex > 0 ? allProjects[currentIndex - 1] : null;
   const nextProject =
-    currentIndex < residentialProjectsData.length - 1
-      ? residentialProjectsData[currentIndex + 1]
+    currentIndex < allProjects.length - 1
+      ? allProjects[currentIndex + 1]
       : null;
 
   const handlePrevious = () => {
