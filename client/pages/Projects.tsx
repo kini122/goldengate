@@ -102,28 +102,28 @@ export default function Projects() {
     <div className="w-full">
       {/* Hero Section */}
       <section
-    className="bg-white"
-    style={{
-      backgroundImage:
-        "url(https://cdn.builder.io/api/v1/image/assets%2F587546ad8c244b4d84afa236ebe7a32d%2F9b2524dd21594ebda42f2b5a91b6a52a)",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-      backgroundSize: "cover",
-      padding: "80px 0",
-      marginBottom: "-5px",
-    }}
-  >
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 text-center mb-4">
-        Curtains, Blinds, Upholstery, and other Decor Projects.
-      </h1>
-    </div>
-  </section>
+        className="bg-white"
+        style={{
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2F587546ad8c244b4d84afa236ebe7a32d%2F9b2524dd21594ebda42f2b5a91b6a52a)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          padding: "80px 0",
+          marginBottom: "-5px",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 text-center mb-4">
+            Curtains, Blinds, Upholstery, and other Decor Projects.
+          </h1>
+        </div>
+      </section>
 
       {/* Project Grid */}
-  <section className="bg-white" style={{ padding: "20px 0 46px" }}>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <section className="bg-white" style={{ padding: "20px 0 46px" }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {projectCategories[0].items.map((item, index) => (
               <div
                 key={index}

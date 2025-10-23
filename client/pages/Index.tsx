@@ -75,7 +75,6 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F204cc6f07bc042c48dcfa93b2bb0b4b1?format=webp&width=1600",
   ];
 
-
   return (
     <div className="w-full">
       {/* Slideshow Hero (full-bleed) */}
@@ -109,7 +108,9 @@ export default function Index() {
                 and handcrafted by the best artisans with state-of-the-art
                 technology.
               </p>
-              <p className="text-base md:text-[16px] leading-7 md:leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">&nbsp;</p>
+              <p className="text-base md:text-[16px] leading-7 md:leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
+                &nbsp;
+              </p>
               <p className="text-base md:text-[17px] leading-7 md:leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
                 We have a wide range of Curtains, Blinds, Upholstery, and many
                 other home décor solutions to suit your needs, from modern to
@@ -235,7 +236,7 @@ export default function Index() {
             title="Golden Gate Instagram Feed"
             src="https://widgets.sociablekit.com/instagram-feed/iframe/25613519"
             className="w-full h-full border-0"
-            style={{ minHeight: '600px' }}
+            style={{ minHeight: "600px" }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
@@ -257,14 +258,15 @@ export default function Index() {
           <div className="absolute left-1/2 top-16 transform -translate-x-1/2 w-[min(760px,90%)] bg-white rounded shadow-lg p-4 z-20">
             <div className="flex items-start justify-between">
               <div className="text-sm text-gray-800">
-                Tp Kumaran Nair road, Thondayad, bye-pass junction, Nellikkode, Kozhikode, Kerala 673017
+                Tp Kumaran Nair road, Thondayad, bye-pass junction, Nellikkode,
+                Kozhikode, Kerala 673017
               </div>
               <button
                 type="button"
                 aria-label="close"
                 className="ml-4 text-gray-500 hover:text-gray-700"
                 onClick={(e) => {
-                  const el = (e.target as HTMLElement).closest('.absolute');
+                  const el = (e.target as HTMLElement).closest(".absolute");
                   if (el) el.remove();
                 }}
               >
