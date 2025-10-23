@@ -194,7 +194,7 @@ export default function Index() {
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <h2 className="text-[48px] font-serif font-bold text-gray-900 mb-12 text-center">
+          <h2 className="text-2xl md:text-[48px] font-serif font-bold text-gray-900 mb-12 text-center">
             Our Partners
           </h2>
           <div className="flex gap-8 items-center justify-center flex-wrap w-auto">
