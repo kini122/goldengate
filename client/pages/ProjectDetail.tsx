@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { residentialProjectsData, commercialProjectsData } from "@/data/projects";
+import {
+  residentialProjectsData,
+  commercialProjectsData,
+} from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import ImageModal from "@/components/ImageModal";
 
@@ -26,15 +29,15 @@ export default function ProjectDetail() {
       <div className="w-full flex items-center justify-center min-h-screen">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Project not found</h1>
-          <Button onClick={() => navigate("/projects")}>Back to Projects</Button>
+          <Button onClick={() => navigate("/projects")}>
+            Back to Projects
+          </Button>
         </div>
       </div>
     );
   }
 
-  const currentIndex = allProjects.findIndex(
-    (p) => p.id === projectId
-  );
+  const currentIndex = allProjects.findIndex((p) => p.id === projectId);
   const previousProject =
     currentIndex > 0 ? allProjects[currentIndex - 1] : null;
   const nextProject =
@@ -58,8 +61,10 @@ export default function ProjectDetail() {
     <div className="w-full">
       {/* Hero Section */}
       <section className="relative w-full">
-        <div className="relative h-96 md:h-96 bg-gray-200 overflow-hidden cursor-pointer"
-          onClick={() => openModal([project.heroImage], 0)}>
+        <div
+          className="relative h-96 md:h-96 bg-gray-200 overflow-hidden cursor-pointer"
+          onClick={() => openModal([project.heroImage], 0)}
+        >
           <img
             src={project.heroImage}
             alt={project.name}
@@ -71,7 +76,8 @@ export default function ProjectDetail() {
         <div
           className="absolute inset-0 flex flex-col justify-end"
           style={{
-            background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,1) 100%)",
+            background:
+              "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,1) 100%)",
           }}
         >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12">

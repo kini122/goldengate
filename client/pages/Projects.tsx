@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { residentialProjectsData, commercialProjectsData } from "@/data/projects";
+import {
+  residentialProjectsData,
+  commercialProjectsData,
+} from "@/data/projects";
 import ImageModal from "@/components/ImageModal";
 
 const projectCategories = [
@@ -173,7 +176,8 @@ export default function Projects() {
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold/60 mx-auto mb-6" />
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Discover our exquisite residential interiors designed with precision and elegance
+              Discover our exquisite residential interiors designed with
+              precision and elegance
             </p>
           </div>
 
@@ -181,7 +185,7 @@ export default function Projects() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
             {residentialProjects.map((project, index) => {
               const projectData = residentialProjectsData.find(
-                (p) => p.name === project.name
+                (p) => p.name === project.name,
               );
               const projectId = projectData?.id;
 
@@ -209,7 +213,8 @@ export default function Projects() {
                       {project.name}
                     </h3>
                     <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                      {projectData?.shortDescription || "Expertly designed interior spaces"}
+                      {projectData?.shortDescription ||
+                        "Expertly designed interior spaces"}
                     </p>
 
                     {/* Button */}
@@ -232,7 +237,8 @@ export default function Projects() {
           {/* Bottom CTA */}
           <div className="text-center">
             <p className="text-gray-600 mb-6">
-              Explore all our residential projects and see the transformation we create
+              Explore all our residential projects and see the transformation we
+              create
             </p>
           </div>
         </div>
@@ -248,7 +254,8 @@ export default function Projects() {
             </h2>
             <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold/60 mx-auto mb-6" />
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Transform commercial spaces with our premium hospitality design solutions
+              Transform commercial spaces with our premium hospitality design
+              solutions
             </p>
           </div>
 
@@ -307,7 +314,8 @@ export default function Projects() {
           {/* Bottom CTA */}
           <div className="text-center">
             <p className="text-gray-600 mb-6">
-              Experience the elegance and sophistication of our commercial design expertise
+              Experience the elegance and sophistication of our commercial
+              design expertise
             </p>
           </div>
         </div>

@@ -26,7 +26,10 @@ function Slideshow({
   }, [images, interval]);
 
   return (
-    <div className="relative w-full overflow-hidden h-[70vh] md:h-screen cursor-pointer" onClick={() => onImageClick(index)}>
+    <div
+      className="relative w-full overflow-hidden h-[70vh] md:h-screen cursor-pointer"
+      onClick={() => onImageClick(index)}
+    >
       {images.map((src, i) => (
         <img
           key={src}
@@ -91,7 +94,10 @@ export default function Index() {
   return (
     <div className="w-full">
       {/* Slideshow Hero (full-bleed) */}
-      <Slideshow images={slideshowImages} onImageClick={(index) => openModal(slideshowImages, index)} />
+      <Slideshow
+        images={slideshowImages}
+        onImageClick={(index) => openModal(slideshowImages, index)}
+      />
 
       {/* About Section */}
       <section className="relative w-full">
@@ -183,8 +189,17 @@ export default function Index() {
                 finalized, we procure the required materials.
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 cursor-pointer"
-              onClick={() => openModal(["https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"], 0)}>
+            <div
+              className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 cursor-pointer"
+              onClick={() =>
+                openModal(
+                  [
+                    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800",
+                  ],
+                  0,
+                )
+              }
+            >
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"
                 alt="Golden Gate Project"
