@@ -82,14 +82,14 @@ export default function Index() {
       <Slideshow images={slideshowImages} />
 
       {/* About Section */}
-      <section className="relative w-full min-w-[980px]">
+      <section className="relative w-full">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 h-full w-full bg-[rgb(217,196,166)]" />
         </div>
         <div className="relative w-full">
           <div className="grid w-full grid-rows-[min-content_min-content_1fr_min-content]">
-            <div className="relative mx-auto mb-[6px] mt-[53px] w-[980px]">
-              <h2 className="text-[36px] leading-[1.2] text-[rgb(49,64,63)] text-center tracking-[1.8px]">
+            <div className="relative mx-auto mb-1 mt-12 w-full max-w-[980px] px-4">
+              <h2 className="text-2xl md:text-[36px] leading-[1.2] text-[rgb(49,64,63)] text-center tracking-[1.2px]">
                 <span className="text-[rgb(90,69,38)]">
                   <span className="tracking-[1.8px]">
                     <span className="tracking-[1.8px]">
