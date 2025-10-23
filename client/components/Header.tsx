@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Projects', href: '/projects' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "About", href: "/about" },
+    { label: "Contact Us", href: "/contact" },
   ];
 
   return (
@@ -21,13 +21,16 @@ export function Header() {
             <div
               className="w-12 h-12 rounded"
               style={{
-                backgroundImage: 'url(https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb987937915344673bbcfa78df0790768)',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
+                backgroundImage:
+                  "url(https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb987937915344673bbcfa78df0790768)",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
               }}
             />
-            <span className="hidden sm:inline text-lg font-serif font-semibold text-gold-dark">Golden Gate</span>
+            <span className="hidden sm:inline text-lg font-serif font-semibold text-gold-dark">
+              Golden Gate
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

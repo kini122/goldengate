@@ -19,9 +19,7 @@ const queryClient = new QueryClient();
 const AppLayout = ({ children }: { children: React.ReactNode }) => (
   <div className="flex flex-col min-h-screen">
     <Header />
-    <main className="flex-grow">
-      {children}
-    </main>
+    <main className="flex-grow">{children}</main>
     <Footer />
   </div>
 );
@@ -33,11 +31,46 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AppLayout><Index /></AppLayout>} />
-          <Route path="/projects" element={<AppLayout><Projects /></AppLayout>} />
-          <Route path="/about" element={<AppLayout><About /></AppLayout>} />
-          <Route path="/contact" element={<AppLayout><Contact /></AppLayout>} />
-          <Route path="*" element={<AppLayout><NotFound /></AppLayout>} />
+          <Route
+            path="/"
+            element={
+              <AppLayout>
+                <Index />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <AppLayout>
+                <Projects />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <AppLayout>
+                <About />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <AppLayout>
+                <Contact />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <AppLayout>
+                <NotFound />
+              </AppLayout>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>

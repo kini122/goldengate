@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    email: '',
-    phone: '',
+    firstName: "",
+    email: "",
+    phone: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ firstName: '', email: '', phone: '' });
+    console.log("Form submitted:", formData);
+    setFormData({ firstName: "", email: "", phone: "" });
   };
 
   return (
@@ -31,7 +31,8 @@ export default function Contact() {
             Coming Soon.
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Fill up this form for Free consultation and Exclusive Disco on your Interior Decor.
+            Fill up this form for Free consultation and Exclusive Disco on your
+            Interior Decor.
           </p>
         </div>
       </section>
@@ -111,7 +112,9 @@ export default function Contact() {
       {/* Contact Info Section */}
       <section className="bg-white py-10 lg:py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">Get in Touch</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
+            Get in Touch
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="font-serif font-bold text-gray-900 mb-2">Phone</h3>
@@ -122,7 +125,9 @@ export default function Contact() {
               <p className="text-gray-600">info@goldengate.com</p>
             </div>
             <div>
-              <h3 className="font-serif font-bold text-gray-900 mb-2">Location</h3>
+              <h3 className="font-serif font-bold text-gray-900 mb-2">
+                Location
+              </h3>
               <p className="text-gray-600">Kozhikode, Kerala</p>
             </div>
           </div>

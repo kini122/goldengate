@@ -1,4 +1,4 @@
-import { Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 export function Footer() {
   return (

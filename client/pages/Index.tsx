@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export default function Index() {
   return (
@@ -64,7 +64,10 @@ export default function Index() {
 
           <div className="text-center">
             <Link to="/projects">
-              <Button variant="outline" className="border-gold text-gold hover:bg-gold/5">
+              <Button
+                variant="outline"
+                className="border-gold text-gold hover:bg-gold/5"
+              >
                 View All Projects
               </Button>
             </Link>
@@ -79,10 +82,17 @@ export default function Index() {
             Quality Curtains, Blinds and other Decor
           </h2>
           <p className="text-gray-600 text-lg leading-relaxed mb-6">
-            Golden Gate Curtains were founded in 1992 to provide a productive outlet for creative and skilled textile design. We make sure to stay at the forefront of all the latest trends so we can provide our clients with modern and stylish textile designs. From conceptualization to the final outcomes, each design process is completely unique and tailored to suit the specific needs of the client.
+            Golden Gate Curtains were founded in 1992 to provide a productive
+            outlet for creative and skilled textile design. We make sure to stay
+            at the forefront of all the latest trends so we can provide our
+            clients with modern and stylish textile designs. From
+            conceptualization to the final outcomes, each design process is
+            completely unique and tailored to suit the specific needs of the
+            client.
           </p>
           <p className="text-gray-600 text-lg leading-relaxed">
-            Get in touch to find out more about our design services, and let's start working together today.
+            Get in touch to find out more about our design services, and let's
+            start working together today.
           </p>
         </div>
       </section>
@@ -96,10 +106,15 @@ export default function Index() {
                 Experience the Golden Touch
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed mb-4">
-                We have 25 years of experience in textile designs and interior decor. By working closely with our clients through every stage of their project, we're able to create something truly special and unique.
+                We have 25 years of experience in textile designs and interior
+                decor. By working closely with our clients through every stage
+                of their project, we're able to create something truly special
+                and unique.
               </p>
               <p className="text-gray-600 text-lg leading-relaxed">
-                After consultation, we create a mockup of the proposed design, and share it with the client for approval and feedback. Once finalized, we procure the required materials.
+                After consultation, we create a mockup of the proposed design,
+                and share it with the client for approval and feedback. Once
+                finalized, we procure the required materials.
               </p>
             </div>
             <div className="relative overflow-hidden rounded-sm bg-gray-200 h-96">
@@ -163,7 +178,12 @@ export default function Index() {
           </p>
           <div className="bg-gold/5 p-8 rounded-sm">
             <p className="text-gray-600 text-lg leading-relaxed text-center">
-              We strive to bring you the latest ranges of decorative textiles with diverse textures and finishes. Every product is meticulously selected to provide our clients with modern and stylish interior decor options. From conceptualization to the final outcomes, each design process is completely unique and tailored to suit the specific needs of the client.
+              We strive to bring you the latest ranges of decorative textiles
+              with diverse textures and finishes. Every product is meticulously
+              selected to provide our clients with modern and stylish interior
+              decor options. From conceptualization to the final outcomes, each
+              design process is completely unique and tailored to suit the
+              specific needs of the client.
             </p>
             <div className="mt-8 text-center">
               <Link to="/contact">
