@@ -1,6 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useState } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { residentialProjectsData, commercialProjectsData } from "@/data/projects";
+import ImageModal from "@/components/ImageModal";
 
 const projectCategories = [
   {
@@ -100,6 +101,15 @@ const residentialProjects = [
 
 export default function Projects() {
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImages, setModalImages] = useState<string[]>([]);
+  const [modalIndex, setModalIndex] = useState(0);
+
+  const openModal = (images: string[], index: number = 0) => {
+    setModalImages(images);
+    setModalIndex(index);
+    setModalOpen(true);
+  };
 
   return (
     <div className="w-full">
@@ -130,7 +140,8 @@ export default function Projects() {
             {projectCategories[0].items.map((item, index) => (
               <div
                 key={index}
-                className="relative overflow-hidden rounded-sm bg-gray-200 h-64"
+                className="relative overflow-hidden rounded-sm bg-gray-200 h-64 cursor-pointer"
+                onClick={() => openModal([item.image], 0)}
               >
                 <img
                   src={item.image}
