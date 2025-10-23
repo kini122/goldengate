@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-function Slideshow({ images, interval = 5000 }: { images: string[]; interval?: number }) {
+function Slideshow({ images, interval = 3000 }: { images: string[]; interval?: number }) {
   const [index, setIndex] = useState<number>(() => Math.floor(Math.random() * images.length));
 
   useEffect(() => {
@@ -12,28 +13,35 @@ function Slideshow({ images, interval = 5000 }: { images: string[]; interval?: n
   }, [images, interval]);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-sm h-[420px] md:h-[520px] lg:h-[640px]">
+    <div className="relative w-full overflow-hidden h-screen">
       {images.map((src, i) => (
         <img
           key={src}
           src={src}
           alt={`slideshow-${i}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
             i === index ? "opacity-100" : "opacity-0"
           }`}
           loading="eager"
         />
       ))}
-      <div className="absolute inset-0 bg-black/25" />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center text-white max-w-3xl px-4">
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+      <div className="absolute inset-0 flex items-center justify-start">
+        <div className="text-left text-white max-w-3xl px-6 md:px-12 lg:px-24 ml-4 md:ml-8 lg:ml-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">
             Welcome to Golden Gate Decor
           </h1>
           <p className="text-lg md:text-xl mb-6">Your Preferred Interior Design Studio</p>
-          <div className="mx-auto w-max">
+          <div className="flex gap-4">
             <Link to="/projects">
-              <Button className="bg-gold hover:bg-gold-dark text-white">View All Projects</Button>
+              <Button variant="default" className="rounded-full px-6 py-3 border border-gold text-gold bg-transparent hover:bg-gold/10">
+                View Projects
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="outline" className="rounded-full px-6 py-3 border-gold text-white bg-white/10 hover:bg-white/20">
+                Contact Us
+              </Button>
             </Link>
           </div>
         </div>
