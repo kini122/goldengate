@@ -18,9 +18,15 @@ export function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-12 h-12 bg-gradient-to-br from-gold-light to-gold-dark rounded flex items-center justify-center">
-              <span className="text-xl font-serif font-bold text-white">GG</span>
-            </div>
+            <div
+              className="w-12 h-12 rounded"
+              style={{
+                backgroundImage: 'url(https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb987937915344673bbcfa78df0790768)',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
+            />
             <span className="hidden sm:inline text-lg font-serif font-semibold text-gold-dark">Golden Gate</span>
           </Link>
 
