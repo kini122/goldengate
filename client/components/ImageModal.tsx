@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -18,6 +18,8 @@ export default function ImageModal({
 }: ImageModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [zoom, setZoom] = useState(1);
+  const [touchDistance, setTouchDistance] = useState(0);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setCurrentIndex(initialIndex);
@@ -46,117 +48,98 @@ export default function ImageModal({
     setZoom(1);
   };
 
-  const handleZoomIn = () => {
-    setZoom((prev) => Math.min(prev + 0.2, 3));
+  // Pinch zoom touch handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      const touch1 = e.touches[0];
+      const touch2 = e.touches[1];
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      );
+      setTouchDistance(distance);
+    }
   };
 
-  const handleZoomOut = () => {
-    setZoom((prev) => Math.max(prev - 0.2, 1));
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2 && touchDistance > 0) {
+      const touch1 = e.touches[0];
+      const touch2 = e.touches[1];
+      const distance = Math.hypot(
+        touch2.clientX - touch1.clientX,
+        touch2.clientY - touch1.clientY
+      );
+      const scale = distance / touchDistance;
+      setZoom((prev) => Math.max(1, Math.min(prev * scale, 3)));
+      setTouchDistance(distance);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchDistance(0);
   };
 
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
       onClick={onClose}
     >
-      {/* Modal Container */}
+      {/* Minimal Modal */}
       <div
-        className="relative bg-white rounded-lg shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] flex flex-col"
+        className="relative w-full h-full flex flex-col items-center justify-center"
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h3 className="text-xl font-serif font-semibold text-gray-900">
-            {title || `Image ${currentIndex + 1} of ${images.length}`}
-          </h3>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-            aria-label="Close modal"
-          >
-            <X className="w-6 h-6 text-gray-600" />
-          </button>
-        </div>
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 p-2 hover:bg-white/10 rounded-full transition-colors"
+          aria-label="Close modal"
+        >
+          <X className="w-8 h-8 text-white" />
+        </button>
 
         {/* Image Container */}
-        <div className="flex-1 flex items-center justify-center overflow-hidden bg-gray-50 relative">
-          <div className="relative w-full h-full flex items-center justify-center">
-            <img
-              src={images[currentIndex]}
-              alt={`${title || "Gallery"} ${currentIndex + 1}`}
-              className="max-w-full max-h-full object-contain"
-              style={{
-                transform: `scale(${zoom})`,
-                transition: "transform 0.2s ease-out",
-              }}
-            />
-          </div>
-
-          {/* Navigation Arrows */}
-          {images.length > 1 && (
-            <>
-              <button
-                onClick={handlePrevious}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="w-6 h-6 text-gray-900" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-200 hover:shadow-xl"
-                aria-label="Next image"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-900" />
-              </button>
-            </>
-          )}
-
-          {/* Zoom Controls */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/90 rounded-full shadow-lg p-2">
-            <button
-              onClick={handleZoomOut}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50"
-              disabled={zoom <= 1}
-              aria-label="Zoom out"
-            >
-              <ZoomOut className="w-5 h-5 text-gray-900" />
-            </button>
-            <div className="flex items-center px-3 py-2 text-sm font-medium text-gray-900 min-w-12 justify-center">
-              {Math.round(zoom * 100)}%
-            </div>
-            <button
-              onClick={handleZoomIn}
-              className="p-2 hover:bg-gray-100 rounded-full transition-colors disabled:opacity-50"
-              disabled={zoom >= 3}
-              aria-label="Zoom in"
-            >
-              <ZoomIn className="w-5 h-5 text-gray-900" />
-            </button>
-          </div>
+        <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+          <img
+            ref={imageRef}
+            src={images[currentIndex]}
+            alt={`${title || "Gallery"} ${currentIndex + 1}`}
+            className="max-w-full max-h-full object-contain cursor-grab active:cursor-grabbing"
+            style={{
+              transform: `scale(${zoom})`,
+              transition: "transform 0.2s ease-out",
+            }}
+          />
         </div>
 
-        {/* Footer */}
+        {/* Navigation Arrows */}
         {images.length > 1 && (
-          <div className="flex items-center justify-center gap-2 p-4 border-t border-gray-200">
-            <div className="flex gap-1">
-              {images.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setCurrentIndex(idx);
-                    setZoom(1);
-                  }}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === currentIndex ? "bg-gray-900 w-8" : "bg-gray-300"
-                  }`}
-                  aria-label={`Go to image ${idx + 1}`}
-                />
-              ))}
+          <>
+            <button
+              onClick={handlePrevious}
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 hover:bg-white/20 rounded-full transition-all duration-200"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-8 h-8 text-white" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 hover:bg-white/20 rounded-full transition-all duration-200"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-8 h-8 text-white" />
+            </button>
+
+            {/* Counter */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm font-medium bg-black/40 px-4 py-2 rounded-full">
+              {currentIndex + 1} / {images.length}
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>
