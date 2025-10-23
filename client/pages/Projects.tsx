@@ -234,7 +234,6 @@ export default function Projects() {
             <p className="text-gray-600 mb-6">
               Explore all our residential projects and see the transformation we create
             </p>
-            <Link to="/projects" />
           </div>
         </div>
       </section>
@@ -310,7 +309,6 @@ export default function Projects() {
             <p className="text-gray-600 mb-6">
               Experience the elegance and sophistication of our commercial design expertise
             </p>
-            <Link to="/projects" />
           </div>
         </div>
       </section>
