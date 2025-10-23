@@ -98,12 +98,7 @@ export default function Index() {
               </p>
             </div>
             <div className="relative mx-auto mb-[35px] h-10 w-[243px]">
-              <a
-                target="_self"
-                aria-label="Explore our projects"
-                href="https://kozker.wixsite.com/goldengate"
-                className="block h-full w-full bg-[rgb(52,52,52)]"
-              >
+              <Link to="/projects" aria-label="Explore our projects" className="block h-full w-full bg-[rgb(52,52,52)]">
                 <span className="flex h-full w-full items-center justify-center">
                   <span className="mr-1 max-w-full whitespace-nowrap text-[15px] tracking-[1.5px] text-white">Explore our projects</span>
                   <span aria-hidden="true" className="hidden sm:inline-flex">
@@ -116,7 +111,7 @@ export default function Index() {
                     </svg>
                   </span>
                 </span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
