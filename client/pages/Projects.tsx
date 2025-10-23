@@ -234,11 +234,7 @@ export default function Projects() {
             <p className="text-gray-600 mb-6">
               Explore all our residential projects and see the transformation we create
             </p>
-            <Link to="/projects">
-              <Button className="bg-gold hover:bg-gold/80 text-white px-8 py-3 rounded-sm transition-all duration-300">
-                Explore All Projects
-              </Button>
-            </Link>
+            <Link to="/projects" />
           </div>
         </div>
       </section>
@@ -314,11 +310,7 @@ export default function Projects() {
             <p className="text-gray-600 mb-6">
               Experience the elegance and sophistication of our commercial design expertise
             </p>
-            <Link to="/projects">
-              <Button className="bg-gold hover:bg-gold/80 text-white px-8 py-3 rounded-sm transition-all duration-300">
-                Explore More Projects
-              </Button>
-            </Link>
+            <Link to="/projects" />
           </div>
         </div>
       </section>
