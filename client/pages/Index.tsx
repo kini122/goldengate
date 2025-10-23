@@ -125,11 +125,11 @@ export default function Index() {
                 believe, Want to explore all our services and products?
               </p>
             </div>
-            <div className="relative mx-auto mb-[35px] h-10 w-[243px]">
+            <div className="relative mx-auto mb-[35px] h-10 w-full max-w-[243px]">
               <Link
                 to="/projects"
                 aria-label="Explore our projects"
-                className="block h-full w-full bg-[rgb(52,52,52)]"
+                className="block h-full w-full bg-[rgb(52,52,52)] rounded-md"
               >
                 <span className="flex h-full w-full items-center justify-center">
                   <span className="mr-1 max-w-full whitespace-nowrap text-[15px] tracking-[1.5px] text-white">
