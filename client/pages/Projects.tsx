@@ -138,24 +138,27 @@ export default function Projects() {
       <section className="bg-white" style={{ padding: "20px 0 46px" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {projectCategories[0].items.map((item, index) => (
-              <div
-                key={index}
-                className="relative overflow-hidden rounded-sm bg-gray-200 h-64 cursor-pointer"
-                onClick={() => openModal([item.image], 0)}
-              >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <p className="text-white text-center font-medium">
-                    {item.name}
-                  </p>
+            {projectCategories[0].items.map((item, index) => {
+              const allImages = projectCategories[0].items.map((i) => i.image);
+              return (
+                <div
+                  key={index}
+                  className="relative overflow-hidden rounded-sm bg-gray-200 h-64 cursor-pointer"
+                  onClick={() => openModal(allImages, index)}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-white text-center font-medium">
+                      {item.name}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
