@@ -109,10 +109,8 @@ export default function Index() {
                 and handcrafted by the best artisans with state-of-the-art
                 technology.
               </p>
-              <p className="text-[16px] leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
-                &nbsp;
-              </p>
-              <p className="text-[17px] leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
+              <p className="text-base md:text-[16px] leading-7 md:leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">&nbsp;</p>
+              <p className="text-base md:text-[17px] leading-7 md:leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
                 We have a wide range of Curtains, Blinds, Upholstery, and many
                 other home décor solutions to suit your needs, from modern to
                 classic styles. We can create anything that you imagine, from
