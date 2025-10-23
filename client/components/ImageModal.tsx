@@ -18,8 +18,8 @@ export default function ImageModal({
 }: ImageModalProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [zoom, setZoom] = useState(1);
-  const [touchDistance, setTouchDistance] = useState(0);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const touchDistanceRef = useRef<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setCurrentIndex(initialIndex);
@@ -36,7 +36,7 @@ export default function ImageModal({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, currentIndex]);
+  }, [isOpen, currentIndex, onClose]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -48,35 +48,38 @@ export default function ImageModal({
     setZoom(1);
   };
 
+  // Calculate distance between two touch points
+  const getDistance = (touch1: Touch, touch2: Touch) => {
+    return Math.hypot(
+      touch2.clientX - touch1.clientX,
+      touch2.clientY - touch1.clientY
+    );
+  };
+
   // Pinch zoom touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     if (e.touches.length === 2) {
-      const touch1 = e.touches[0];
-      const touch2 = e.touches[1];
-      const distance = Math.hypot(
-        touch2.clientX - touch1.clientX,
-        touch2.clientY - touch1.clientY
-      );
-      setTouchDistance(distance);
+      touchDistanceRef.current = getDistance(e.touches[0], e.touches[1]);
     }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length === 2 && touchDistance > 0) {
-      const touch1 = e.touches[0];
-      const touch2 = e.touches[1];
-      const distance = Math.hypot(
-        touch2.clientX - touch1.clientX,
-        touch2.clientY - touch1.clientY
-      );
-      const scale = distance / touchDistance;
-      setZoom((prev) => Math.max(1, Math.min(prev * scale, 3)));
-      setTouchDistance(distance);
+    if (e.touches.length === 2 && touchDistanceRef.current > 0) {
+      e.preventDefault();
+      const currentDistance = getDistance(e.touches[0], e.touches[1]);
+      const scaleFactor = currentDistance / touchDistanceRef.current;
+
+      setZoom((prevZoom) => {
+        const newZoom = prevZoom * scaleFactor;
+        return Math.max(1, Math.min(newZoom, 3));
+      });
+
+      touchDistanceRef.current = currentDistance;
     }
   };
 
   const handleTouchEnd = () => {
-    setTouchDistance(0);
+    touchDistanceRef.current = 0;
   };
 
   if (!isOpen) return null;
@@ -88,11 +91,13 @@ export default function ImageModal({
     >
       {/* Minimal Modal */}
       <div
+        ref={containerRef}
         className="relative w-full h-full flex flex-col items-center justify-center"
         onClick={(e) => e.stopPropagation()}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        style={{ touchAction: "none" }}
       >
         {/* Close Button */}
         <button
@@ -106,13 +111,12 @@ export default function ImageModal({
         {/* Image Container */}
         <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
           <img
-            ref={imageRef}
             src={images[currentIndex]}
             alt={`${title || "Gallery"} ${currentIndex + 1}`}
-            className="max-w-full max-h-full object-contain cursor-grab active:cursor-grabbing"
+            className="max-w-full max-h-full object-contain cursor-grab active:cursor-grabbing select-none"
             style={{
               transform: `scale(${zoom})`,
-              transition: "transform 0.2s ease-out",
+              transition: zoom === 1 ? "transform 0.2s ease-out" : "none",
             }}
           />
         </div>
