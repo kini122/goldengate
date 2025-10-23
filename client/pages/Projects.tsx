@@ -232,62 +232,81 @@ export default function Projects() {
       </section>
 
       {/* Commercial Projects Section */}
-      <section className="bg-gold/5 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <div className="flex flex-col lg:flex-row gap-12 mb-16 items-center justify-center w-full">
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 w-full max-w-2xl cursor-pointer flex-shrink-0"
-              onClick={() => openModal([commercialProjectsData[0]?.heroImage || ""], 0)}>
-              <img
-                src={commercialProjectsData[0]?.heroImage || ""}
-                alt="Commercial Project"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="text-center lg:text-left">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
-                Commercial Projects
-              </h2>
-              <div className="mt-2">
-                <Link to="/projects">
-                  <Button
-                    variant="outline"
-                    className="border-gray-700 text-gray-700 hover:bg-gray-50"
-                  >
-                    Explore
-                  </Button>
-                </Link>
-              </div>
-            </div>
+      <section className="bg-gradient-to-b from-gold/5 to-white py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 mb-4">
+              Commercial Projects
+            </h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold/60 mx-auto mb-6" />
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Transform commercial spaces with our premium hospitality design solutions
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 justify-center items-center mx-auto w-full max-w-2xl">
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 gap-8 max-w-3xl mx-auto mb-12">
             {commercialProjectsData.map((project, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0 cursor-pointer"
-                  onClick={() => openModal(project.galleryImages, 0)}>
-                  <img
-                    src={project.heroImage}
-                    alt={project.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="flex flex-col justify-between py-2">
-                  <h3 className="font-serif font-semibold text-gray-900">
-                    {project.name}
-                  </h3>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-gray-700 text-gray-700 hover:bg-gray-50 w-fit"
-                    onClick={() => {
-                      navigate(`/project/${project.id}`);
-                    }}
+              <div
+                key={index}
+                className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-gold/10 hover:border-gold/30"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 md:p-8">
+                  {/* Image Container */}
+                  <div
+                    className="col-span-1 relative overflow-hidden bg-gray-200 rounded-lg h-56 md:h-full min-h-56 cursor-pointer"
+                    onClick={() => openModal(project.galleryImages, 0)}
                   >
-                    Read More
-                  </Button>
+                    <img
+                      src={project.heroImage}
+                      alt={project.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="col-span-1 md:col-span-2 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-2xl font-serif font-bold text-gray-900 mb-3 group-hover:text-gold transition-colors duration-300">
+                        {project.name}
+                      </h3>
+                      {project.location && (
+                        <p className="text-gold text-sm font-medium mb-4 uppercase tracking-wider">
+                          {project.location}
+                        </p>
+                      )}
+                      <p className="text-gray-600 leading-relaxed line-clamp-3">
+                        {project.description.substring(0, 200)}...
+                      </p>
+                    </div>
+
+                    {/* Button */}
+                    <button
+                      onClick={() => {
+                        navigate(`/project/${project.id}`);
+                      }}
+                      className="mt-6 inline-block px-6 py-2 bg-gold text-white font-medium rounded-sm hover:bg-gold/80 transition-all duration-300 transform hover:-translate-y-0.5 w-fit"
+                    >
+                      View Project
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center">
+            <p className="text-gray-600 mb-6">
+              Experience the elegance and sophistication of our commercial design expertise
+            </p>
+            <Link to="/projects">
+              <Button className="bg-gold hover:bg-gold/80 text-white px-8 py-3 rounded-sm transition-all duration-300">
+                Explore More Projects
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
