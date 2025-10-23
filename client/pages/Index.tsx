@@ -62,13 +62,8 @@ export default function Index() {
 
   return (
     <div className="w-full">
-      {/* Slideshow Hero */}
-      <section className="bg-white py-12 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Slideshow images={slideshowImages} interval={6000} />
-
-        </div>
-      </section>
+        {/* Slideshow Hero (full-bleed) */}
+      <Slideshow images={slideshowImages} />
 
       {/* About Section */}
       <section className="relative w-full min-w-[980px]">
