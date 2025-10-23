@@ -2,12 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
-function Slideshow({ images, interval = 3000 }: { images: string[]; interval?: number }) {
-  const [index, setIndex] = useState<number>(() => Math.floor(Math.random() * images.length));
+function Slideshow({
+  images,
+  interval = 3000,
+}: {
+  images: string[];
+  interval?: number;
+}) {
+  const [index, setIndex] = useState<number>(() =>
+    Math.floor(Math.random() * images.length),
+  );
 
   useEffect(() => {
     if (!images || images.length === 0) return;
-    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), interval);
+    const id = setInterval(
+      () => setIndex((i) => (i + 1) % images.length),
+      interval,
+    );
     return () => clearInterval(id);
   }, [images, interval]);
 
@@ -40,7 +51,10 @@ function Slideshow({ images, interval = 3000 }: { images: string[]; interval?: n
               </Button>
             </Link>
             <Link to="/contact">
-              <Button variant="outline" className="rounded-full px-8 py-3 border border-white/30 text-white bg-white/5 shadow-sm hover:bg-white/10">
+              <Button
+                variant="outline"
+                className="rounded-full px-8 py-3 border border-white/30 text-white bg-white/5 shadow-sm hover:bg-white/10"
+              >
                 Contact Us
               </Button>
             </Link>
@@ -66,14 +80,23 @@ export default function Index() {
     const id = "elfsight-platform-script";
     const removeInjected = () => {
       try {
-        const badge = document.querySelector('a[title="Free Instagram Feed widget"]');
-        if (badge && badge.parentElement) badge.parentElement.removeChild(badge);
+        const badge = document.querySelector(
+          'a[title="Free Instagram Feed widget"]',
+        );
+        if (badge && badge.parentElement)
+          badge.parentElement.removeChild(badge);
         const err = document.querySelector('[eapps-link="errorContainer"]');
         if (err && err.parentElement) err.parentElement.removeChild(err);
-        const data = document.querySelector('[eapps-link="dataStatusContainer"]');
+        const data = document.querySelector(
+          '[eapps-link="dataStatusContainer"]',
+        );
         if (data && data.parentElement) data.parentElement.removeChild(data);
-        const badges = document.querySelectorAll('.elfsight-badge, .eapps-badge, .eapps-widget-badge');
-        badges.forEach((n) => n.parentElement && n.parentElement.removeChild(n));
+        const badges = document.querySelectorAll(
+          ".elfsight-badge, .eapps-badge, .eapps-widget-badge",
+        );
+        badges.forEach(
+          (n) => n.parentElement && n.parentElement.removeChild(n),
+        );
       } catch (e) {
         // ignore
       }
@@ -101,7 +124,7 @@ export default function Index() {
 
   return (
     <div className="w-full">
-        {/* Slideshow Hero (full-bleed) */}
+      {/* Slideshow Hero (full-bleed) */}
       <Slideshow images={slideshowImages} />
 
       {/* About Section */}
@@ -127,18 +150,37 @@ export default function Index() {
             <div className="relative mx-auto mb-2 w-[42px] border-t-[2.4px] border-[rgb(90,69,38)]" />
             <div className="relative mx-auto mb-[10px] min-h-[280px] w-[554px]">
               <p className="text-[16px] leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
-                Looking for the best Curtains and Blinds designs near you?
-                Our Curtains and Blinds are designed by Experienced professionals and handcrafted by the best artisans with state-of-the-art technology.
+                Looking for the best Curtains and Blinds designs near you? Our
+                Curtains and Blinds are designed by Experienced professionals
+                and handcrafted by the best artisans with state-of-the-art
+                technology.
               </p>
-              <p className="text-[16px] leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">&nbsp;</p>
+              <p className="text-[16px] leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
+                &nbsp;
+              </p>
               <p className="text-[17px] leading-[25.6px] text-[rgb(49,64,63)] text-center font-light">
-                We have a wide range of Curtains, Blinds, Upholstery, and many other home décor solutions to suit your needs, from modern to classic styles. We can create anything that you imagine, from rustic to contemporary, kid's rooms to office spaces we can cater to everyone with our experience and variety that will only add to your space and make it more welcoming. We also prefer to maintain an everlasting relationship with our clients, thus if you ever worry about after-sales services, we can guarantee that we will always be at your disposal. It might be a little hard to believe, Want to explore all our services and products?
+                We have a wide range of Curtains, Blinds, Upholstery, and many
+                other home décor solutions to suit your needs, from modern to
+                classic styles. We can create anything that you imagine, from
+                rustic to contemporary, kid's rooms to office spaces we can
+                cater to everyone with our experience and variety that will only
+                add to your space and make it more welcoming. We also prefer to
+                maintain an everlasting relationship with our clients, thus if
+                you ever worry about after-sales services, we can guarantee that
+                we will always be at your disposal. It might be a little hard to
+                believe, Want to explore all our services and products?
               </p>
             </div>
             <div className="relative mx-auto mb-[35px] h-10 w-[243px]">
-              <Link to="/projects" aria-label="Explore our projects" className="block h-full w-full bg-[rgb(52,52,52)]">
+              <Link
+                to="/projects"
+                aria-label="Explore our projects"
+                className="block h-full w-full bg-[rgb(52,52,52)]"
+              >
                 <span className="flex h-full w-full items-center justify-center">
-                  <span className="mr-1 max-w-full whitespace-nowrap text-[15px] tracking-[1.5px] text-white">Explore our projects</span>
+                  <span className="mr-1 max-w-full whitespace-nowrap text-[15px] tracking-[1.5px] text-white">
+                    Explore our projects
+                  </span>
                   <span aria-hidden="true" className="hidden sm:inline-flex">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

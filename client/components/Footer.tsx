@@ -24,14 +24,19 @@ export function Footer() {
             </div>
             <div className="flex items-center space-x-4 text-sm text-gray-600">
               <Mail size={16} />
-              <a href="mailto:info@goldengate.example" className="hover:text-gold">
+              <a
+                href="mailto:info@goldengate.example"
+                className="hover:text-gold"
+              >
                 info@goldengate.example
               </a>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-4">Explore</h4>
+            <h4 className="text-sm font-semibold text-gray-900 mb-4">
+              Explore
+            </h4>
             <ul className="space-y-2 text-sm text-gray-600">
               <li>
                 <a href="/projects" className="hover:text-gold">
@@ -52,7 +57,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-gray-900 mb-4">Connect</h4>
+            <h4 className="text-sm font-semibold text-gray-900 mb-4">
+              Connect
+            </h4>
             <div className="flex items-center space-x-4">
               <a
                 href="https://wa.me"
@@ -80,7 +87,10 @@ export function Footer() {
               </a>
             </div>
 
-            <p className="text-sm text-gray-500 mt-6">© {new Date().getFullYear()} Golden Gate Decor. All rights reserved.</p>
+            <p className="text-sm text-gray-500 mt-6">
+              © {new Date().getFullYear()} Golden Gate Decor. All rights
+              reserved.
+            </p>
           </div>
         </div>
       </div>
