@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { residentialProjectsData } from "@/data/projects";
 
 const projectCategories = [
   {
@@ -98,6 +99,8 @@ const residentialProjects = [
 ];
 
 export default function Projects() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -174,29 +177,41 @@ export default function Projects() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center items-center mx-auto">
-            {residentialProjects.map((project, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-full object-cover"
-                  />
+            {residentialProjects.map((project, index) => {
+              const projectData = residentialProjectsData.find(
+                (p) => p.name === project.name
+              );
+              const projectId = projectData?.id;
+
+              return (
+                <div key={index} className="flex gap-4">
+                  <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-between py-2">
+                    <h3 className="font-serif font-semibold text-gray-900">
+                      {project.name}
+                    </h3>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-gray-700 text-gray-700 hover:bg-gray-50 w-fit"
+                      onClick={() => {
+                        if (projectId) {
+                          navigate(`/project/${projectId}`);
+                        }
+                      }}
+                    >
+                      Read More
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex flex-col justify-between py-2">
-                  <h3 className="font-serif font-semibold text-gray-900">
-                    {project.name}
-                  </h3>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-gray-700 text-gray-700 hover:bg-gray-50 w-fit"
-                  >
-                    Read More
-                  </Button>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
