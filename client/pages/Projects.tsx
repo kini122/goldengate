@@ -210,6 +210,7 @@ export default function Projects() {
                 src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"
                 alt="Commercial Project"
                 className="w-full h-full object-cover"
+                style={{ marginTop: "-4px" }}
               />
             </div>
             <div>
