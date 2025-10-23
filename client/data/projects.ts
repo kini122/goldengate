@@ -8,6 +8,29 @@ export interface ProjectData {
   galleryImages: string[];
 }
 
+export const commercialProjectsData: ProjectData[] = [
+  {
+    id: "oshin-hotel",
+    name: "Oshin Hotel",
+    location: "Hotel",
+    shortDescription: "Luxury hotel interior design and furnishings",
+    description: `For the Oshin Hotel, we worked closely with the management to create comfortable and stylish spaces that reflect the unique character of each establishment. Our team of skilled designers and craftsmen used a range of luxurious fabrics, textures, and finishes to bring the vision for each hotel to life.
+
+In the guest rooms, we used a combination of soft lighting, soothing colors, and plush bedding to create a relaxing atmosphere. We also added custom draperies and curtains to enhance the ambiance and ensure privacy for guests. In the public areas, we used a mix of modern and traditional elements to create a welcoming and inviting environment.
+
+Our team worked hard to ensure that every detail of the Oshin Hotel was carefully considered and executed. We used high-end materials and superior craftsmanship to create a space that is both inviting and luxurious. In the lobby and public areas, we chose warm colors and comfortable furniture to create a relaxed atmosphere. We also added art and decorations to add a unique touch to each space. By combining modern and traditional elements, we were able to create a look that is both distinctive and timeless.
+
+We also included a range of amenities to ensure that the guests of the Oshin Hotel had everything they needed. From a business center and fitness center to a pool and spa, we made sure to provide guests with a range of options for recreation and relaxation. We also included a range of dining options, from a casual cafe to a world-class restaurant, ensuring that the Oshin Hotel had something for everyone.`,
+    heroImage:
+      "https://cdn.builder.io/api/v1/image/assets%2Fa410d8cf63c043758cec9f677fbcb45e%2F46e72524073244e088e53a2bc6c1bbc7?format=webp&width=800",
+    galleryImages: [
+      "https://cdn.builder.io/api/v1/image/assets%2Fa410d8cf63c043758cec9f677fbcb45e%2F46e72524073244e088e53a2bc6c1bbc7?format=webp&width=800",
+      "https://cdn.builder.io/api/v1/image/assets%2Fa410d8cf63c043758cec9f677fbcb45e%2F0454bd25b58b46a7aa5db0612edbf590?format=webp&width=800",
+      "https://cdn.builder.io/api/v1/image/assets%2Fa410d8cf63c043758cec9f677fbcb45e%2Fa6ab81be064548f1bbd64608aee31183?format=webp&width=800",
+    ],
+  },
+];
+
 export const residentialProjectsData: ProjectData[] = [
   {
     id: "kunnupuram",
