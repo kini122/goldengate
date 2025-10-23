@@ -287,6 +287,13 @@ export default function Projects() {
           </div>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={modalOpen}
+        images={modalImages}
+        initialIndex={modalIndex}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 }
