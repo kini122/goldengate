@@ -1,10 +1,20 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useState } from "react-router-dom";
 import { residentialProjectsData, commercialProjectsData } from "@/data/projects";
 import { Button } from "@/components/ui/button";
+import ImageModal from "@/components/ImageModal";
 
 export default function ProjectDetail() {
   const { projectId } = useParams();
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImages, setModalImages] = useState<string[]>([]);
+  const [modalIndex, setModalIndex] = useState(0);
+
+  const openModal = (images: string[], index: number = 0) => {
+    setModalImages(images);
+    setModalIndex(index);
+    setModalOpen(true);
+  };
 
   // Search in both residential and commercial projects
   const allProjects = [...residentialProjectsData, ...commercialProjectsData];
@@ -47,11 +57,12 @@ export default function ProjectDetail() {
     <div className="w-full">
       {/* Hero Section */}
       <section className="relative w-full">
-        <div className="relative h-96 md:h-96 bg-gray-200 overflow-hidden">
+        <div className="relative h-96 md:h-96 bg-gray-200 overflow-hidden cursor-pointer"
+          onClick={() => openModal([project.heroImage], 0)}>
           <img
             src={project.heroImage}
             alt={project.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
 
@@ -107,7 +118,8 @@ export default function ProjectDetail() {
             {project.galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="relative bg-gray-200 overflow-hidden rounded-sm h-72"
+                className="relative bg-gray-200 overflow-hidden rounded-sm h-72 cursor-pointer"
+                onClick={() => openModal(project.galleryImages, index)}
               >
                 <img
                   src={image}
@@ -161,6 +173,14 @@ export default function ProjectDetail() {
           </div>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={modalOpen}
+        images={modalImages}
+        initialIndex={modalIndex}
+        onClose={() => setModalOpen(false)}
+        title={project.name}
+      />
     </div>
   );
 }
