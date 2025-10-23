@@ -230,18 +230,41 @@ export default function Projects() {
       {/* Commercial Projects Section */}
       <section className="bg-gold/5 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-12 text-center">
-            Commercial Projects
-          </h2>
+          <div className="flex flex-col lg:flex-row gap-12 mb-16 items-center justify-center w-full">
+            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 w-full max-w-2xl cursor-pointer flex-shrink-0"
+              onClick={() => openModal([commercialProjectsData[0]?.heroImage || ""], 0)}>
+              <img
+                src={commercialProjectsData[0]?.heroImage || ""}
+                alt="Commercial Project"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="text-center lg:text-left">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
+                Commercial Projects
+              </h2>
+              <div className="mt-2">
+                <Link to="/projects">
+                  <Button
+                    variant="outline"
+                    className="border-gray-700 text-gray-700 hover:bg-gray-50"
+                  >
+                    Explore
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-1 gap-8 justify-center items-center mx-auto w-full max-w-2xl">
             {commercialProjectsData.map((project, index) => (
               <div key={index} className="flex gap-4">
-                <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0">
+                <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0 cursor-pointer"
+                  onClick={() => openModal(project.galleryImages, 0)}>
                   <img
                     src={project.heroImage}
                     alt={project.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="flex flex-col justify-between py-2">
