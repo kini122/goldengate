@@ -121,9 +121,9 @@ export default function Projects() {
   </section>
 
       {/* Project Grid */}
-      <section className="bg-white py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  <section className="bg-white" style={{ padding: "20px 0 46px" }}>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {projectCategories[0].items.map((item, index) => (
               <div
                 key={index}
