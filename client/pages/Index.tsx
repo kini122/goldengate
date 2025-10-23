@@ -23,7 +23,7 @@ function Slideshow({
   }, [images, interval]);
 
   return (
-    <div className="relative w-full overflow-hidden h-screen">
+    <div className="relative w-full overflow-hidden h-[70vh] md:h-screen">
       {images.map((src, i) => (
         <img
           key={src}
