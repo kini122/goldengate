@@ -1,4 +1,5 @@
-import { useParams, useNavigate, useState } from "react-router-dom";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { residentialProjectsData, commercialProjectsData } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import ImageModal from "@/components/ImageModal";
