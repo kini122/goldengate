@@ -72,7 +72,7 @@ export default function Index() {
           <div className="absolute inset-0 h-full w-full bg-[rgb(217,196,166)]" />
         </div>
         <div className="relative w-full">
-          <div className="pointer-events-none grid w-full grid-rows-[min-content_min-content_1fr_min-content]">
+          <div className="grid w-full grid-rows-[min-content_min-content_1fr_min-content]">
             <div className="relative mx-auto mb-[6px] mt-[53px] w-[980px]">
               <h2 className="text-[36px] leading-[1.2] text-[rgb(49,64,63)] text-center tracking-[1.8px]">
                 <span className="text-[rgb(90,69,38)]">
