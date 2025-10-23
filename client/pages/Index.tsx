@@ -37,7 +37,7 @@ function Slideshow({
       ))}
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
       <div className="absolute inset-0 flex items-center justify-start">
-        <div className="text-left text-white w-full max-w-[1100px] px-6 md:px-12 lg:px-24 ml-4 md:ml-8 lg:ml-16">
+        <div className="text-left text-white w-full max-w-[90%] md:max-w-[1100px] px-4 sm:px-6 md:px-12 lg:px-24 ml-2 md:ml-8 lg:ml-16">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4 tracking-wide leading-tight md:leading-snug">
             Welcome to Golden Gate Decor
           </h1>
