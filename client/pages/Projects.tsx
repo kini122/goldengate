@@ -217,30 +217,39 @@ export default function Projects() {
       </section>
 
       {/* Commercial Projects Section */}
-      <section className="bg-white py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-96">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"
-                alt="Commercial Project"
-                className="w-full h-full object-cover"
-                style={{ marginTop: "-4px" }}
-              />
-            </div>
-            <div>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-8">
-                Commercial Projects
-              </h2>
-              <Link to="/projects">
-                <Button
-                  variant="outline"
-                  className="border-gray-700 text-gray-700 hover:bg-gray-50"
-                >
-                  Explore
-                </Button>
-              </Link>
-            </div>
+      <section className="bg-gold/5 py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-12 text-center">
+            Commercial Projects
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 justify-center items-center mx-auto w-full max-w-2xl">
+            {commercialProjectsData.map((project, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="relative overflow-hidden rounded-sm bg-gray-200 w-40 h-32 flex-shrink-0">
+                  <img
+                    src={project.heroImage}
+                    alt={project.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col justify-between py-2">
+                  <h3 className="font-serif font-semibold text-gray-900">
+                    {project.name}
+                  </h3>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-gray-700 text-gray-700 hover:bg-gray-50 w-fit"
+                    onClick={() => {
+                      navigate(`/project/${project.id}`);
+                    }}
+                  >
+                    Read More
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
