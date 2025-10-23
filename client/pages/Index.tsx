@@ -1,23 +1,66 @@
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
+function Slideshow({ images, interval = 5000 }: { images: string[]; interval?: number }) {
+  const [index, setIndex] = useState<number>(() => Math.floor(Math.random() * images.length));
+
+  useEffect(() => {
+    if (!images || images.length === 0) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), interval);
+    return () => clearInterval(id);
+  }, [images, interval]);
+
+  return (
+    <div className="relative w-full overflow-hidden rounded-sm h-[420px] md:h-[520px] lg:h-[640px]">
+      {images.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt={`slideshow-${i}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            i === index ? "opacity-100" : "opacity-0"
+          }`}
+          loading="eager"
+        />
+      ))}
+      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-center text-white max-w-3xl px-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-4">
+            Welcome to Golden Gate Decor
+          </h1>
+          <p className="text-lg md:text-xl mb-6">Your Preferred Interior Design Studio</p>
+          <div className="mx-auto w-max">
+            <Link to="/projects">
+              <Button className="bg-gold hover:bg-gold-dark text-white">View All Projects</Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Index() {
+  const slideshowImages = [
+    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb4ea7fbd1a9d4e2580e07696e7c3b875?format=webp&width=1600",
+    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F8e2fb543f2684f09bdf2433d921fc315?format=webp&width=1600",
+    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F24a86975b88f457d9aef54c0d99f5359?format=webp&width=1600",
+    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F2f48f77a46824b2cb19ae680c404bdc9?format=webp&width=1600",
+    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F05ca7951a9d04f49ab54cadaada9ba13?format=webp&width=1600",
+    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F204cc6f07bc042c48dcfa93b2bb0b4b1?format=webp&width=1600",
+  ];
+
   return (
     <div className="w-full">
-      {/* Hero Section */}
+      {/* Slideshow Hero */}
       <section className="bg-white py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 mb-4">
-              Welcome to Golden Gate Decor
-            </h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Your Preferred Interior Design Studio
-            </p>
-          </div>
+          <Slideshow images={slideshowImages} interval={6000} />
 
           {/* Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 mt-8">
             <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-80">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb4ea7fbd1a9d4e2580e07696e7c3b875?format=webp&width=800"
@@ -163,12 +206,21 @@ export default function Index() {
       </section>
 
       {/* Partners Section */}
-      <section className="bg-gold/5 py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-12 text-center">
+      <section
+        className="bg-gold/5 py-16 lg:py-24"
+        style={{
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2F587546ad8c244b4d84afa236ebe7a32d%2Fb3f1903b441545068b056630c95d455d)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <h2 className="text-[48px] font-serif font-bold text-gray-900 mb-12 text-center">
             Our Partners
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+          <div className="flex gap-8 items-center justify-center flex-wrap w-auto">
             <div className="h-20 flex items-center justify-center">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F102810140467459cac589b9a7a489608?format=webp&width=800"
