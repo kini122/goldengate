@@ -110,6 +110,7 @@ export default function Projects() {
       backgroundPosition: "center",
       backgroundSize: "cover",
       padding: "80px 0",
+      marginBottom: "-5px",
     }}
   >
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
