@@ -61,6 +61,18 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F204cc6f07bc042c48dcfa93b2bb0b4b1?format=webp&width=1600",
   ];
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const id = "elfsight-platform-script";
+    if (!document.getElementById(id)) {
+      const s = document.createElement("script");
+      s.src = "https://apps.elfsight.com/p/platform.js";
+      s.async = true;
+      s.id = id;
+      document.body.appendChild(s);
+    }
+  }, []);
+
   return (
     <div className="w-full">
         {/* Slideshow Hero (full-bleed) */}
@@ -193,6 +205,13 @@ export default function Index() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Instagram Widget (Elfsight) */}
+      <section className="bg-white py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="elfsight-app-f2341214-4c72-4a66-b705-f3c92905d72b" />
         </div>
       </section>
 
