@@ -75,52 +75,6 @@ export default function Index() {
     "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F204cc6f07bc042c48dcfa93b2bb0b4b1?format=webp&width=1600",
   ];
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const id = "elfsight-platform-script";
-    const removeInjected = () => {
-      try {
-        const badge = document.querySelector(
-          'a[title="Free Instagram Feed widget"]',
-        );
-        if (badge && badge.parentElement)
-          badge.parentElement.removeChild(badge);
-        const err = document.querySelector('[eapps-link="errorContainer"]');
-        if (err && err.parentElement) err.parentElement.removeChild(err);
-        const data = document.querySelector(
-          '[eapps-link="dataStatusContainer"]',
-        );
-        if (data && data.parentElement) data.parentElement.removeChild(data);
-        const badges = document.querySelectorAll(
-          ".elfsight-badge, .eapps-badge, .eapps-widget-badge",
-        );
-        badges.forEach(
-          (n) => n.parentElement && n.parentElement.removeChild(n),
-        );
-      } catch (e) {
-        // ignore
-      }
-    };
-
-    if (!document.getElementById(id)) {
-      const s = document.createElement("script");
-      s.src = "https://apps.elfsight.com/p/platform.js";
-      s.async = true;
-      s.id = id;
-      s.onload = () => {
-        removeInjected();
-      };
-      document.body.appendChild(s);
-    } else {
-      // already loaded
-      removeInjected();
-    }
-
-    // run periodically for a short time to catch dynamic inserts
-    const iv = setInterval(removeInjected, 500);
-    const to = setTimeout(() => clearInterval(iv), 5000);
-    return () => clearTimeout(to);
-  }, []);
 
   return (
     <div className="w-full">
@@ -276,10 +230,17 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Instagram Widget (Elfsight) */}
-      <section className="bg-white py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="elfsight-app-f2341214-4c72-4a66-b705-f3c92905d72b" />
+      {/* Instagram Feed (SociableKit iframe) */}
+      <section className="w-full h-screen bg-gray-50">
+        <div className="w-full h-full">
+          <iframe
+            title="Golden Gate Instagram Feed"
+            src="https://widgets.sociablekit.com/instagram-feed/iframe/25613519"
+            className="w-full h-full border-0"
+            style={{ minHeight: '600px' }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
 
