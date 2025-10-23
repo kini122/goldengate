@@ -246,7 +246,7 @@ export default function Index() {
 
       {/* Map Section */}
       <section className="w-full">
-        <div className="w-full h-[480px] relative">
+        <div className="w-full h-[320px] md:h-[480px] relative">
           <iframe
             title="Golden Gate Location"
             src="https://maps.google.com/maps?ll=11.265695,75.820899&t=k&z=15&output=embed"
