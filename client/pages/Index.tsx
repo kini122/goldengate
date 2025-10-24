@@ -277,7 +277,7 @@ export default function Index() {
         <div className="w-full h-[320px] md:h-[480px] relative">
           <iframe
             title="Golden Gate Location"
-            src="https://maps.google.com/maps?ll=11.265695,75.820899&t=k&z=15&markers=color:red%7C11.265695,75.820899&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3912.0542770635803!2d75.820899!3d11.265695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7f4e1e1e1e1e1%3A0x1234567890abcdef!2sGolden%20Gate%20Decor!5e0!3m2!1sen!2sin!4v1234567890"
             className="w-full h-full border-0"
             allowFullScreen
             loading="lazy"
