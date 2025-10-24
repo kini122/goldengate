@@ -265,7 +265,7 @@ export default function Index() {
             title="Golden Gate Instagram Feed"
             src="https://widgets.sociablekit.com/instagram-feed/iframe/25613519"
             className="w-full h-full border-0"
-            style={{ minHeight: "600px" }}
+            style={{ minHeight: "1154px", height: "1154px" }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
