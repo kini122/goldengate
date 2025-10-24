@@ -25,12 +25,23 @@ export default function Contact() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="bg-white py-8 lg:py-4">
+      <section
+        className="py-4 lg:py-4"
+        style={{
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2Fa410d8cf63c043758cec9f677fbcb45e%2F1319f44051e647e4ba6c98a38819a930)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
-            Coming Soon.
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-1">
+            <p>
+              <span style={{ fontWeight: "normal" }}>Coming Soon.</span>
+            </p>
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-600 mb-2">
             Fill up this form for Free consultation and Exclusive Disco on your
             Interior Decor.
           </p>
@@ -109,30 +120,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact Info Section */}
-      <section className="bg-white py-10 lg:py-12">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
-            Get in Touch
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="font-serif font-bold text-gray-900 mb-2">Phone</h3>
-              <p className="text-gray-600">+91 (123) 456 7890</p>
-            </div>
-            <div>
-              <h3 className="font-serif font-bold text-gray-900 mb-2">Email</h3>
-              <p className="text-gray-600">info@goldengate.com</p>
-            </div>
-            <div>
-              <h3 className="font-serif font-bold text-gray-900 mb-2">
-                Location
-              </h3>
-              <p className="text-gray-600">Kozhikode, Kerala</p>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
