@@ -259,8 +259,8 @@ export default function Index() {
       </section>
 
       {/* Instagram Feed (SociableKit iframe) */}
-      <section className="w-full h-screen bg-gray-50">
-        <div className="w-full h-full">
+      <section className="w-full min-h-screen bg-gray-50">
+        <div className="w-full h-full min-h-screen">
           <iframe
             title="Golden Gate Instagram Feed"
             src="https://widgets.sociablekit.com/instagram-feed/iframe/25613519"
