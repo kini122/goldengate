@@ -317,7 +317,16 @@ export default function Index() {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-white py-16 lg:py-24">
+      <section
+        className="py-16 lg:py-24"
+        style={{
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2Fa410d8cf63c043758cec9f677fbcb45e%2Fca24e1eb37034c8ea7a82ecad74afb6f)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4 text-center">
             Get to Know Us
@@ -325,7 +334,10 @@ export default function Index() {
           <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
             Your Preferred Interior Design Studio
           </p>
-          <div className="bg-gold/5 p-8 rounded-sm">
+          <div
+            className="p-8 rounded-sm"
+            style={{ backgroundColor: "rgba(232, 203, 157, 0.69)" }}
+          >
             <p className="text-gray-600 text-lg leading-relaxed text-center">
               We strive to bring you the latest ranges of decorative textiles
               with diverse textures and finishes. Every product is meticulously
