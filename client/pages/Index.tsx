@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import ImageModal from "@/components/ImageModal";
 
 function Slideshow({
   images,
   interval = 3000,
+  onImageClick,
 }: {
   images: string[];
   interval?: number;
+  onImageClick: (index: number) => void;
 }) {
   const [index, setIndex] = useState<number>(() =>
     Math.floor(Math.random() * images.length),
@@ -23,7 +26,10 @@ function Slideshow({
   }, [images, interval]);
 
   return (
-    <div className="relative w-full overflow-hidden h-[70vh] md:h-screen">
+    <div
+      className="relative w-full overflow-hidden h-[70vh] md:h-screen cursor-pointer"
+      onClick={() => onImageClick(index)}
+    >
       {images.map((src, i) => (
         <img
           key={src}
@@ -66,6 +72,16 @@ function Slideshow({
 }
 
 export default function Index() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImages, setModalImages] = useState<string[]>([]);
+  const [modalIndex, setModalIndex] = useState(0);
+
+  const openModal = (images: string[], index: number = 0) => {
+    setModalImages(images);
+    setModalIndex(index);
+    setModalOpen(true);
+  };
+
   const slideshowImages = [
     "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2Fb4ea7fbd1a9d4e2580e07696e7c3b875?format=webp&width=1600",
     "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F8e2fb543f2684f09bdf2433d921fc315?format=webp&width=1600",
@@ -78,7 +94,10 @@ export default function Index() {
   return (
     <div className="w-full">
       {/* Slideshow Hero (full-bleed) */}
-      <Slideshow images={slideshowImages} />
+      <Slideshow
+        images={slideshowImages}
+        onImageClick={(index) => openModal(slideshowImages, index)}
+      />
 
       {/* About Section */}
       <section className="relative w-full">
@@ -170,11 +189,21 @@ export default function Index() {
                 finalized, we procure the required materials.
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96">
+            <div
+              className="relative overflow-hidden rounded-sm bg-gray-200 h-64 md:h-96 cursor-pointer"
+              onClick={() =>
+                openModal(
+                  [
+                    "https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800",
+                  ],
+                  0,
+                )
+              }
+            >
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F84749e18bca64bd7a57af62d04439b13%2F7432377167f94d3c90b65e8e4e496087?format=webp&width=800"
                 alt="Golden Gate Project"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           </div>
@@ -230,13 +259,13 @@ export default function Index() {
       </section>
 
       {/* Instagram Feed (SociableKit iframe) */}
-      <section className="w-full h-screen bg-gray-50">
-        <div className="w-full h-full">
+      <section className="w-full bg-gray-50" style={{ minHeight: "1154px" }}>
+        <div className="w-full h-full" style={{ minHeight: "1154px" }}>
           <iframe
             title="Golden Gate Instagram Feed"
             src="https://widgets.sociablekit.com/instagram-feed/iframe/25613519"
             className="w-full h-full border-0"
-            style={{ minHeight: "600px" }}
+            style={{ minHeight: "1154px", height: "1154px" }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
@@ -248,7 +277,7 @@ export default function Index() {
         <div className="w-full h-[320px] md:h-[480px] relative">
           <iframe
             title="Golden Gate Location"
-            src="https://maps.google.com/maps?ll=11.265695,75.820899&t=k&z=15&output=embed"
+            src="https://maps.google.com/maps?q=11.265695,75.820899&z=15&output=embed"
             className="w-full h-full border-0"
             allowFullScreen
             loading="lazy"
@@ -288,7 +317,16 @@ export default function Index() {
       </section>
 
       {/* Contact Section */}
-      <section className="bg-white py-16 lg:py-24">
+      <section
+        className="py-16 lg:py-24"
+        style={{
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2Fa410d8cf63c043758cec9f677fbcb45e%2Fca24e1eb37034c8ea7a82ecad74afb6f)",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4 text-center">
             Get to Know Us
@@ -296,7 +334,10 @@ export default function Index() {
           <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
             Your Preferred Interior Design Studio
           </p>
-          <div className="bg-gold/5 p-8 rounded-sm">
+          <div
+            className="p-8 rounded-sm"
+            style={{ backgroundColor: "rgba(232, 203, 157, 0.69)" }}
+          >
             <p className="text-gray-600 text-lg leading-relaxed text-center">
               We strive to bring you the latest ranges of decorative textiles
               with diverse textures and finishes. Every product is meticulously
@@ -315,6 +356,13 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      <ImageModal
+        isOpen={modalOpen}
+        images={modalImages}
+        initialIndex={modalIndex}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 }

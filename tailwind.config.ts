@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Playfair Display", "Georgia", "serif"],
-        sans: ["Inter", "sans-serif"],
+        serif: ["Raleway", "Josefin Sans", "sans-serif"],
+        sans: ["Raleway", "Josefin Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
